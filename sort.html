@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sự khác nhau giữa var và let như thế nào ?</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        #header #main-header {
+            margin-left: 400px;
+            margin-top: 50px;
+            width: 650px;
+            float: left;
+            min-height: 400px;
+            background: white;
+            padding: 20px 20px;
+        }
+
+        pre {
+            background-color: black;
+            color: white;
+        }
+
+        b {
+            background-color: rgb(173, 169, 169);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        p {
+            background-color: rgb(210, 219, 216);
+        }
+
+        h1 {
+            text-shadow: 2px 2px rgb(121, 116, 116);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        h2 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="main-header">
+            <h1>Sự khác nhau giữa Var và Let trong Javascript</h1>
+
+            <h2>A. Giới thiệu</h2>
+
+            <p>ES6 (viết tắt của ECMAScript 6) là một tập hợp các kỹ thuật nâng cao của Javascript. <br/>
+                ECMAScript do hiệp hội các nhà sản xuất máy tính Châu Âu đề xuất làm tiêu chuẩn của ngôn ngữ Javascript.<br/> 
+                Bạn cứ nghĩ xem hiện nay có khá nhiều trình duyệt Browser ra đời và 
+                nếu mỗi Browser lại có cách chạy Javascript khác nhau thì các trang web không thể hoạt động trên tất cả các trình duyệt đó được, <br/>
+                vì vậy cần có một chuẩn chung để bắt buộc các browser phải phát triển dựa theo chuẩn đó.
+                Một trong những tính năng nổi bật của ES6 đó là sự bổ sung let và const phục vụ cho việc khai báo biến dữ liệu. <br/>
+                Vậy tại sao lại cần tới let và const dù trước đó đã có var để khai báo biến, 
+                thì ở bài viết này chúng ta sẽ cùng tìm hiểu lý do của từng kiểu khai báo biến.</p>
+            
+            <h2>B. Phân biệt</h2>
+            <h3>1. Biến var </h3>
+
+            <p> Như đã biết trong Vanilla Javascript, với từ khóa var chúng ta có thể khai báo đa dạng các kiểu biến như number, string, boolean, etc. <br/>
+                Trừ trường hợp được khai báo bên trong 1 function (khi đó biến var sẽ có scope là function/locally scoped), biến var sẽ có scope là globally scoped. <br/>
+                Đặc biệt, biến var còn có thêm tính chất hoisting: nghĩa là dù khai báo ở đâu thì biến đều sẽ được đem lên đầu scope trước khi code được thực hiện.</p><br/>
+            <h4>Ví dụ: </h4>
+                <pre>
+                    <code>
+                        console.log (greeting);
+                        var greeting = "say hello";
+                    </code>
+                </pre>
+            <h4>sẽ được biên dịch là</h4>
+            <pre>
+                <code>
+                    var greeting;
+                    console.log(greeting); // greeting is undefined
+                    greeting = "say hello";
+                </code>
+            </pre>
+            <h4>Nhưng có một vấn đề với biến <b style="background-color: rgb(183, 181, 181); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">var</b>. Giả sử ta có ví dụ như sau:</h4>
+            <pre>
+                <code>
+                    var greeting = "hey hi";
+                    var times = 4;
+                    if (times > 3) {
+                        var greeting = "say Hello instead"; 
+                     }
+                    console.log(greeting); //"say Hello instead"
+                </code>
+            </pre>
+                <p>Vì thỏa điều kiện if nên greeting khi này sẽ có giá trị là "say Hello instead" và 
+                    sẽ vẫn giữ nguyên giá trị này sau khi thoát ra khỏi block if. <br/>
+                    Điều này sẽ không có gây vấn đề gì nhưng nếu trong trường hợp code của chúng ta lên đến hàng trăm, 
+                    hàng nghìn dòng code, <br/>hoặc chúng ta cũng không biết được giá trị của biến liệu có bị thay đổi ở đoạn code nào sẽ dẫn đến 
+                    việc debug là vô cùng khó khăn.<br/> Để giải quyết vấn đề trên thì ES6 cung cấp cho chúng ta thêm 2 cách khác để khai báo biến bao gồm let và const.</p>
+           
+            <h3>2. Biến let </h3>
+            <p> Một trong những nguyên nhân khiến let có thể thay thế var để xử lý vấn đề nêu trên 
+                là vì biến let được khai báo sẽ có scope là block scoped chứ không phải globally hay locally scoped.</p>
+                <pre>
+                    <code>
+                        let greeting = "say Hi";
+                        let times = 4;                           
+                        if (times > 3) {
+                            let hello = "say Hello instead";
+                            console.log(hello); // "say Hello instead"
+                         }
+                        console.log(hello); // hello is not defined
+                    </code>
+                </pre>  
+                <p> Chúng ta có thế thấy là đối với biến có scope là block scoped nếu ra khỏi scope được khai báo thì sẽ không thể sử dụng được nữa.<br/>
+                    <b>let</b> cho phép chúng ta cập nhật giá trị của biến chứ không cho phép chúng ta tái khái báo lại biến đó.</p>
+                    <pre>
+                        <code>
+                            let greeting = "say Hi";
+                            console.log(greeting); //"say Hi"
+
+                            greeting = "say Hello instead";
+                            console.log(greeting); //"say Hello instead"
+
+                            -----------------------------------------------------
+
+                            let greeting = "say Hi";
+                            let greeting = "say Hello instead";
+                        </code>
+                    </pre>  
+                    <p> Tuy nhiên, đối với các block khác nhau thì việc tái khai báo biến sẽ không sinh ra lỗi vì đối với từng scope,<br/>
+                         mỗi biến sẽ được xem xét là 1 biến riêng khác biệt.                       
+                    </p>
+                        <pre>
+                            <code>
+                                let greeting = "say Hi";
+                                if (true) {
+                                    let greeting = "say Hello instead";
+                                    console.log(greeting); // "say Hello instead"
+                                }
+                                console.log(greeting); // "say Hi"
+                            </code>
+                        </pre>      
+                    <p> Giống với <b>var</b>, <b>let</b> cũng có tính hoisting tuy nhiên lại khác nhau ở chỗ thay vì 
+                        <b>var</b> được khởi tạo với giá trị là <b>undefined</b> thì <b>let</b> sẽ không có bất kỳ giá trị khởi tạo nào. <br/>
+                        Điều này dẫn đến việc nếu chúng ta sử dụng biến <b>let</b> trước khi khai báo thì sẽ gặp lỗi <b>Reference Error</b>.
+                    </p> 
+            <h2>C. Kết Luận</h2>
+            <p> 
+                <b>Vậy khi nào thì bạn nên dùng var, let ? </b><br>
+                - Không nên sử dụng var vì từ khóa này rất khó xác định scope cụ thể của biến.<br>
+                - Sử dụng let khi biến đó cần phải thay đổi giá trị. <br>
+                - Sử dụng const khi biến đó không cần thay đổi giá trị (Config DB, nhập liệu từ người dùng,... ).
+            </p>                
+        </div>
+    </div>
+</body>
+</html>

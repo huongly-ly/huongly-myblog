@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh Slices & Substring & Substr</title>
+    <style>
+        h1 {
+            text-transform: uppercase;
+            background-color: rgb(132, 138, 192);
+            text-shadow: 2px 2px #ccc;
+            text-align: center;
+        }
+
+        h2 {
+            color: blue;
+            background-color: beige;
+        }
+
+        h3 {
+            font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: black;
+        }
+        i { 
+            text-align: center;
+            color: red;
+            size: 20px;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Cách sử dụng phương thức querySelector() trong javascript.</h1>
+    <p><i>Phương thức document.querySelector () hoạt động như thế nào?</i></p>
+    <h2>A. .querySelector()</h2>
+    <h3><u>1. Syntax</u></h3>
+    <img src="./asset/img/vidu5.JPG" alt="ví dụ minh hoạ" style="align-items: center">
+    <h3><u>2. Usage notes</u></h3>
+    <p> Nếu bộ chọn được chỉ định khớp với một ID được sử dụng không chính xác nhiều lần trong tài liệu, phần tử đầu tiên có ID đó sẽ được trả về.<br>
+        Phần tử giả CSS sẽ không bao giờ trả về bất kỳ phần tử nào, như được chỉ định trong API Bộ chọn./p> 
+           <h4>-- Escaping special characters --</h4>
+        <p> Để đối sánh với một ID hoặc các bộ chọn không tuân theo cú pháp CSS chuẩn <br>
+            (ví dụ: bằng cách sử dụng dấu hai chấm hoặc dấu cách không thích hợp), bạn phải thoát ký tự bằng dấu gạch chéo ngược ("\"). <br>
+            Vì dấu gạch chéo ngược cũng là một ký tự thoát trong JavaScript, nếu bạn đang nhập một chuỗi ký tự, <br>
+            bạn phải thoát nó hai lần (một lần cho chuỗi JavaScript và lần khác cho querySelector ()):</p>
+    <h3><u>3. Examples</u></h3>
+            <h4>-- Finding the first element matching a class --</h4>
+            <p>Trong ví dụ này, phần tử đầu tiên trong tài liệu có lớp "myclass" được trả về:</p>
+            <img src="./asset/img/vidu6.JPG" alt="Ví dụ minh hoạ">
+            <h4>-- A more complex selector --</h4>
+            <p>Các bộ chọn cũng có thể thực sự mạnh mẽ, như được minh họa trong ví dụ sau. <br>
+                Ở đây, phần tử "input" đầu tiên có tên "login" ("input" name = "đăng nhập")</p>
+            <img src="./asset/img/vidu7.JPG" alt="Ví dụ minh hoạ">
+            <h4>-- Negation --</h4>
+            <p>Vì tất cả các chuỗi bộ chọn CSS đều hợp lệ, bạn cũng có thể phủ nhận bộ chọn:</p>
+            <img src="./asset/img/vidu8.JPG" alt="Ví dụ minh hoạ">
+            <p>Thao tác này sẽ chọn đầu vào có div cha với lớp bảng điều khiển người dùng nhưng không phải lớp chính.</p>  
+
+    
+    <h2>B. Truy vấn theo phạm vi</h2>
+    <p> Khi sử dụng document.querySelector()đường truyền bắt đầu tại document nút. <br> 
+        Đây có thể là một hoạt động thực sự tốn kém nếu tài liệu có nhiều nút.<br>
+        Nếu bạn biết các phần tử cụ thể mà bạn muốn chọn trực tiếp dưới một nút cụ thể thì bạn có thể bắt đầu tại nút đó.<br> 
+        Điều này là do phương thức querySelector được kế thừa thông qua tất cả các nút html DOM.</p>
+</body>
+</html>
